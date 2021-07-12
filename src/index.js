@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FirebaseContext from './context/firebase';
 import { firebase, FieldValue } from './lib/firebase';
+import './styles/app.css';
 import App from './App';
 
 ReactDOM.render(
