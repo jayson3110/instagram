@@ -62,6 +62,7 @@ export default function Login() {
 		                   placeholder="Email address"
 		                   className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border  border-gray-primary rounded mb-2" 
                            onChange={({target}) => setEmailAddress(target.value)}
+                           value={emailAddress}
                            
 		                   />
 
@@ -71,6 +72,7 @@ export default function Login() {
 		                   placeholder="Password"
 		                   className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border  border-gray-primary rounded mb-2" 
                            onChange={({target}) => setPassword(target.value)}
+                           value={password}
                            
 		            />
 
@@ -89,9 +91,9 @@ export default function Login() {
 
 		          Don't have an account? {` `}
 
-		          <Link to="/signup" className="font-bold text-blude-medium">
+		          <Link to={ROUTES.SIGN_UP} className="font-bold text-blude-medium">
 
-		              Sign up
+		              Sign Up
 
 		          </Link>
 
