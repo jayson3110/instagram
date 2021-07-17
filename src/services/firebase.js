@@ -27,7 +27,8 @@ export async function getUserByUserId(userId) {
 export async function getSusggestProfiles(userId, following) {
 	const result = await firebase.firestore().collection('users').limit(10).get();
     
- 
+    
+    
     
 	return result.docs.map((user) => ({
 		...user.data(), 
