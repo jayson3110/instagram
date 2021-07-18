@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import {getSusggestProfiles} from '../../services/firebase';
 import  SuggestedProfiles from './suggested-profile'
 
-export default function Suggestions({userId, following}){
+export default function Suggestions({userId, following, loggedInUserDocId}){
 	const [profiles, setProfiles] = useState(null);
 
     // go ahead and get the suggested profiles
@@ -18,7 +18,7 @@ export default function Suggestions({userId, following}){
     		suggestedProfiles();
     	}
 
-    	console.log( profiles);
+    	console.log(profiles);
     	
 
     },[userId])
@@ -42,10 +42,11 @@ export default function Suggestions({userId, following}){
 	         {profiles.map((profile) => (
 	         	<SuggestedProfiles
 	         	   key={profile.docId}
-	         	   userDocId={profile.docId}
+	         	   profileDocId={profile.docId}
 	         	   profilId={profile.userId}
 	         	   userId={userId}
 	         	   username={profile.username}
+	         	   loggedInUserDocId={loggedInUserDocId}
 
 	         	/>
 	         ))}
@@ -61,5 +62,6 @@ export default function Suggestions({userId, following}){
 
 Suggestions.propTypes ={
 	useId: PropTypes.string,
-	following: PropTypes.array
+	following: PropTypes.array,
+	loggedInUserDocId: PropTypes.string
 }

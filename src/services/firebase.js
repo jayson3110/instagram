@@ -37,3 +37,22 @@ export async function getSusggestProfiles(userId, following) {
 
 
 }
+
+
+// updateLoggedInUserFollowing, updateFollowedUserFollowers
+
+
+export async function updateLoggedInUserFollowing(loggedInUserDocId, profilId, isFollowingProfile) {
+	return firebase.firestore().collection('users').doc(loggedInUserDocId).update({
+		following: isFollowingProfile
+		? FieldValue.arrayRemove(profilId) : FieldValue.arrayUnion(profilId)
+	});
+}
+
+export async function updateFollowedUserFollowers(profileDocId, loggedInUserDocId, isFollowingProfile) {
+	return firebase.firestore().collection('users').doc(profileDocId).update({
+		followers: isFollowingProfile
+		? FieldValue.arrayRemove(loggedInUserDocId) : FieldValue.arrayUnion(loggedInUserDocId)
+	});
+}
+ 
