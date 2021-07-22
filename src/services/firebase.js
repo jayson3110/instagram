@@ -7,6 +7,17 @@ export async function doesUsernameExist(username) {
 	return result.docs.map((user) => user.data().length > 0);
 }
 
+export async function getUserByUsername(username) {
+	// body...
+	const result = await firebase.firestore().collection('users').where('username', '==', username).get();
+     const user =  result.docs.map((item) => ({
+     	...item.data(),
+     	docId: item.id
+     }));
+	return user;
+}
+
+
 
 //get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
@@ -80,4 +91,20 @@ export async function getPhotos(userId, following) {
 
 
 
+
+}
+
+
+
+export async function getUserPhotosByUsername(username) {
+	const [user] = await getUserByUsername(username);
+	const result = await firebase.firestore().collection('photos').where('userId', '==', user.userId).get();
+
+	const photos = result.docs.map((item) => ({
+		...item.data(),
+		docId: item.id
+
+	}));
+
+	return photos;
 }
