@@ -21,6 +21,7 @@ export default function Profile() {
 			}else {
 				history.push(ROUTES.NOT_FOUND);
 			}
+			console.log(user[0]);
 		}
 		checkUserExists();
 
