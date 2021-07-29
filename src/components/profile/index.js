@@ -35,7 +35,6 @@ export default function Profile({user}) {
 	  />
 
 	  <Photos photos={photosCollection} />
-	  <p>Hello {user.username} </p>
 	</>
 }
 
