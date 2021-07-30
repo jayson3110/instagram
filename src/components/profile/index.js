@@ -18,12 +18,12 @@ export default function Profile({user}) {
 		async function getProfileInfoAndPhotos() {
 			
 			const photos = await getUserPhotosByUsername(user.username);
-			// console.log(photos[0]);
 			dispatch({profile:user, photosCollection:photos, followerCount: user.followers.length});
 		}
 		getProfileInfoAndPhotos();
 		
 	},[user.username])
+
 
 	return <>
 	  
